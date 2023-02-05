@@ -5,9 +5,8 @@ export default function Nav(props)
 {
     let router = useRouter();
     let query = router.asPath; 
-    let style_str = "hover:bg-[#c9e5fb] pt-2 pb-2 pl-3 pr-3 text-white hover:text-black " 
-    console.log(style_str.concat(query.substring(query.lastIndexOf('/')-1) == '/' ? "bg-[#c9e5fb]" :""))
-    return( <div className={"pl-72 pr-20 bg-black  gap-16 cursor-default hidden lg:flex " + styles.nav_bar}>
+    let style_str = "hover:bg-[#c9e5fb] pt-2 pb-2 pl-3 pr-3 hover:text-black ".concat(props.mob ? 'text-black ml-auto mr-auto text-center w-full  ':'text-white ') 
+    return( <div className={" cursor-default ".concat(props.mob ? 'flex flex-col gap-5 ':' pl-72 pr-20 gap-16 flex bg-black')}>
     <div className={style_str.concat(query.substring(query.lastIndexOf('/')-1) == '/' ? "bg-[#c9e5fb]" :"")} onClick={(e)=>
     {
       router.replace('/')
@@ -48,8 +47,8 @@ export default function Nav(props)
       CONTACT US
     </div>
     <div className="flex gap-6">
-      <div className="text-white pt-2 pb-2 pl-3 pr-3">LOGIN</div>
-      <div className="text-white pt-2 pb-2 pl-3 pr-3">REGISTER</div>
+      <div className="text-white pt-2 pb-2 pl-3 pr-3" style={{display:props.mob ? 'none':'block'}}>LOGIN</div>
+      <div className="text-white pt-2 pb-2 pl-3 pr-3" style={{display:props.mob ? 'none':'block'}}>REGISTER</div>
     </div>
   </div>)
 }

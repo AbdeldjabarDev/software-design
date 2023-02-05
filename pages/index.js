@@ -24,14 +24,14 @@ export default function Home() {
         <link rel="icon" href="/logo.png" />
       </Head>
       <Header></Header>
-     <Nav></Nav>
+   <div className='hidden md:block' ><Nav></Nav></div>
       <AboutComp></AboutComp>
      <ServicesComp></ServicesComp>
   <OurSoftware></OurSoftware>
     {/* <div className={"text-4xl font-bold w-full bg-no-repeat h-[200px] bg-[url('/images/img-9.png')] mt-20 pt-16 pb-16" + inter.className}>How it works</div> */}
-<div>
+
 <ContactComp></ContactComp>
-</div>
+
 
 <Footer></Footer>
     </div>

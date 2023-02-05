@@ -7,7 +7,8 @@ export default function Contact(props)
 {
     return(<div className="flex flex-col gap-10">
         <Header></Header>
-        <Nav></Nav>
+        <div className='hidden md:block' ><Nav></Nav></div>
+
     <ContactComp></ContactComp>
     <Footer></Footer>
     </div>)

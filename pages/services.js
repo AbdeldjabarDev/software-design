@@ -6,7 +6,8 @@ export default function Services(props)
 {
     return(<div className="flex flex-col gap-10">
         <Header></Header>
-        <Nav></Nav>
+        <div className='hidden md:block' ><Nav></Nav></div>
+
     <ServicesComp></ServicesComp>
     <Footer></Footer>
     </div>)
