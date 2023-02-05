@@ -1,16 +1,55 @@
-import { Inter } from '@next/font/google'
-const inter = Inter({ subsets: ['latin'] })
+import { useRouter } from "next/router"
+import { useState } from "react"
+import styles from "../styles/Home.module.css";
 export default function Nav(props)
 {
-return (<div className="bg-[url('/images/banner-bg.png')] border border-black h-[100vh] lg:h-[65vh] w-full pl-5 pt-5 pb-10 flex flex-col">
-    <div className="absolute top-5 left-5 bg-[url('/images/logo.png')] bg-no-repeat w-[150px] h-10 ml-1 mr-auto"></div>
-    <div className={'ml-14 text-[#679af5] text-5xl font-bold w-fit mt-[10vh] '  + inter.className}>BUILD BEST</div>
-    <div className={'ml-14 text-black  text-6xl w-fit font-bold ' + inter.className}> SOFTWARE</div>
-    <div className={'ml-14 mt-3 max-w-[40%] ' + inter.className}>There are many variations of passages of Lorem Ipsum available, but the majority </div>
-    <div className='flex mt-10 gap-8 ml-14'>
-        <div className={'bg-black w-fit pt-4 pb-4 pr-4 pl-6 text-white ' + inter.className}>CONTACT US</div>
-        <div className={'bg-white w-fit pt-4 pb-4 pr-4 hover:bg-black hover:text-white pl-6 text-black border ' + inter.className}>GET A QUOTE</div>
+    let router = useRouter();
+    let query = router.asPath; 
+    let style_str = "hover:bg-[#c9e5fb] pt-2 pb-2 pl-3 pr-3 text-white hover:text-black " 
+    console.log(style_str.concat(query.substring(query.lastIndexOf('/')-1) == '/' ? "bg-[#c9e5fb]" :""))
+    return( <div className={"pl-72 pr-20 bg-black  gap-16 cursor-default hidden lg:flex " + styles.nav_bar}>
+    <div className={style_str.concat(query.substring(query.lastIndexOf('/')-1) == '/' ? "bg-[#c9e5fb]" :"")} onClick={(e)=>
+    {
+      router.replace('/')
+    }}>
+      HOME
     </div>
-  
-</div>)
+    <div className={style_str.concat(query.substring(query.lastIndexOf('/')-1) == '/about' ? "bg-[#c9e5fb]" :"")} onClick={(e)=>
+    {
+      console.log(e.target.className)
+      router.replace('/about')
+    }}>
+      ABOUT
+    </div>
+    <div className={style_str.concat(query.substring(query.lastIndexOf('/')-1) == '/oursoftware' ? "bg-[#c9e5fb]" :"")} onClick={(e)=>
+    {
+        console.log(e.target.className)
+ 
+      router.replace('/oursoftware')
+
+    }}>
+      OUR SOFTWARE
+    </div>
+    <div className={style_str.concat(query.substring(query.lastIndexOf('/')-1) == '/services' ? "bg-[#c9e5fb]" :"")} onClick={(e)=>
+    {
+        console.log(e.target.className)
+
+        router.replace('/services')
+    }}>
+      SERVICES
+    </div>
+    <div className={style_str.concat(query.substring(query.lastIndexOf('/')-1) == '/contact' ? "bg-[#c9e5fb]" :"")} onClick={(e)=>
+{
+    console.log(e.target.className)
+
+    router.replace('/contact')
+
+    }}>
+      CONTACT US
+    </div>
+    <div className="flex gap-6">
+      <div className="text-white pt-2 pb-2 pl-3 pr-3">LOGIN</div>
+      <div className="text-white pt-2 pb-2 pl-3 pr-3">REGISTER</div>
+    </div>
+  </div>)
 }

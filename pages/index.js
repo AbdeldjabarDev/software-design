@@ -2,14 +2,19 @@ import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "@next/font/google";
 import styles from "../styles/Home.module.css";
+import Header from "../components/Header";
+import { useState } from "react";
+import AboutComp from "../components/AboutComp";
+import ServicesComp from "../components/ServicesComp";
+import OurSoftware from "../components/OurSoftwareComp";
+import ContactComp from "../components/ContactComp";
+import Footer from "../components/Footer";
+import { useRouter } from "next/router";
 import Nav from "../components/Nav";
-import TextContainerAbout from "../components/TextContainerAbout";
-import TextContainerHIT from "../components/TextContainerHIT";
-import { useRef, useState } from "react";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  let [x,setX] = useState(0);
+
   return (
     <div className="flex flex-col gap-10">
       <Head>
@@ -18,155 +23,17 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/logo.png" />
       </Head>
-      <Nav></Nav>
-      <div className={"pl-72 pr-20 bg-black  gap-16 cursor-default hidden lg:flex " +styles.nav_bar}>
-        <div className="hover:bg-[#c9e5fb] pt-2 pb-2 pl-3 pr-3 text-white hover:text-black ">
-          HOME
-        </div>
-        <div className="hover:bg-[#c9e5fb] pt-2 pb-2 pl-3 pr-3 text-white hover:text-black ">
-          ABOUT
-        </div>
-        <div className="hover:bg-[#c9e5fb] pt-2 pb-2 pl-3 pr-3 text-white hover:text-black ">
-          OUR SOFTWARE
-        </div>
-        <div className="hover:bg-[#c9e5fb] pt-2 pb-2 pl-3 pr-3 text-white hover:text-black ">
-          SERVICES
-        </div>
-        <div className="hover:bg-[#c9e5fb] pt-2 pb-2 pl-3 pr-3 text-white hover:text-black ">
-          CONTACT US
-        </div>
-        <div className="flex gap-6">
-          <div className="text-white pt-2 pb-2 pl-3 pr-3">LOGIN</div>
-          <div className="text-white pt-2 pb-2 pl-3 pr-3">REGISTER</div>
-        </div>
-      </div>
-      <div className="flex gap-16 lg:ml-44 lg:mr-44 mt-10 lg:flex-nowrap flex-wrap ml-16 mr-16">
-        <div className="flex gap-8 mt-20 flex-col">
-          <div className={"font-bold text-5xl mb-3 " + inter.className}>
-            ABOUT SOFTWARE
-          </div>
-          <div className={" text-lg max-w-[70%] opacity-70" + inter.className}>
-            Contrary to popular belief, Lorem Ipsum is not simply random text.
-            It has roots in a piece of classical Latin literature from 45 BC,
-            making it over 2000 years old. Richard McClintock, a Latin professor
-            at Hampden
-          </div>
-          <div className="text-md mt-10 w-fit pl-6 pr-6 pt-3 pb-3 hover:border-black hover:bg-white hover:border text-white bg-black hover:text-black __className_9c9965">
-            READ MORE
-          </div>
-        </div>
-        <img className="" src="/images/img-1.png" />
-      </div>
-      <div className="w-full flex gap-20 relative mt-20">
-        <div className="absolute top-0 left-0 rounded-r-lg bg-[#f9f9fb] w-[600px] -z-10 h-full border"></div>
-        <div className="flex flex-col gap-10 lg:ml-60 ml-16">
-        <div className={"font-semibold text-4xl mt-6 " + inter.className}>
-            What We do
-          </div>
-          <TextContainerAbout 
-          title="New Technology" 
-          content="There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour" 
-          src="/images/img-2.png"
-          />
-             <TextContainerAbout 
-          title="Long Live UX" 
-          content="There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour" 
-          src="/images/img-3.png"
-          />   <TextContainerAbout 
-          title="Web Trends" 
-          content="There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour" 
-          src="/images/img-4.png"
-          />   <TextContainerAbout 
-          title="User interfaces" 
-          content="There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour" 
-          src="/images/img-5.png"
-          />
-      
-        </div>
-      
-      </div>
-    <div className="flex flex-col gap-10 mt-28">
-    <div className={"w-fit text-4xl font-bold ml-auto mr-auto " + inter.className}>Our Software</div>
-      <div className={" ml-auto mr-auto w-[40%] text-lg " + inter.className}>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour</div>
-
-      <div className="relative flex ml-auto mr-auto gap-10 w-[80vw] lg:w-fit  mt-8 lg:overflow-auto overflow-hidden ">
-        <div className="absolute top-5 left-0 ml-5 mr-auto text-5xl content-center"  onClick={(e)=>
-        {
-          if(x <=0)
-          setX(3)
-          else
-          setX(x+1)
-        }}>{"<"}</div>
-        <div className="absolute top-5 right-0 mr-5 ml-auto text-5xl content-center" onClick={(e)=>
-        {
-          if(x <=3)
-          setX(3)
-          else
-          setX(x-1)
-        }}>{">"}</div>
-    <div>
-    <div className="w-[300%] lg:w-fit h-fit flex gap-4 lg:gap-0" style={{transform:`translateX(${(x*1/3)*100}%)`}}>
-        <img className="w-[100%]" src='/images/img-8.png'></img>
-        <img className={"w-[100%] " +  styles.middle_img}  src='/images/img-7.png' ></img>
-        <img className="w-[100%]" src='/images/img-6.png'></img>
-        </div>
-    </div>
-       
-       </div>
-    </div>
-    <div className="flex w-full mt-10 p-6 bg-no-repeat bg-[url('/images/img-9.png')]">
-      {/* <img src="/images/img-9.png" className="ml-0"></img> */}
-      <div className={"lg:text-4xl text-3xl w-fit ml-auto mr-auto font-bold mt-20 " + inter.className}>How it Works</div>
-    </div>
+      <Header></Header>
+     <Nav></Nav>
+      <AboutComp></AboutComp>
+     <ServicesComp></ServicesComp>
+  <OurSoftware></OurSoftware>
     {/* <div className={"text-4xl font-bold w-full bg-no-repeat h-[200px] bg-[url('/images/img-9.png')] mt-20 pt-16 pb-16" + inter.className}>How it works</div> */}
-   <div className="flex w-[80%] ml-auto mr-auto gap-6 flex-wrap lg:flex-nowrap mt-16">
-   <TextContainerHIT title="FULLY RESPONSIVE" 
-content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo" 
-   />
-  <TextContainerHIT title="WELL DOCUMENTED"
-content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo"
-/>
-<TextContainerHIT title="EASY TO USE"
-content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo"
-/>
-   </div>
-   <div className={"text-4xl ml-auto mr-auto w-fit mb-10 font-bold " + inter.className} >Get In Touch</div>
-   <div className="flex w-full h-[60vh] mt-10 flex-wrap" >
-    <img className="lg:w-[50%] w-full" src='/images/img-10.png'></img>
-    <form className="flex flex-col gap-7 bg-[#f9f9fb] w-full lg:w-[50%] pl-10 pt-6 pb-6 overflow-hidden ">
-      <input className={"text-lg border rounded-md p-3 w-[80%] "  + inter.className}  placeholder="Name"></input>
-      <input className={"text-lg border rounded-md p-3 w-[80%] " + inter.className}   placeholder="Email"></input>
-      <input className={"text-lg border rounded-md p-3 w-[80%] " + inter.className}   placeholder="Phone Number"></input>
-      <textarea className={"text-lg border rounded-md w-[80%] p-3 " + inter.className} placeholder="Message"></textarea>
-      <button className={' rounded-md text-white w-fit pl-5 pr-5 pt-2 pb-2 bg-[#c9e5fb] ' + inter.className}>SEND</button>
-    </form>
-   </div>
-   <div className={"bg-black lg:h-[480px]  text-white flex flex-col " + inter.className}>
-    <div className="flex lg:flex-nowrap flex-wrap gap-10 mt-20  w-[80%] ml-auto mr-auto">
-    <div className="flex flex-col gap-12">
-      <img src='/images/footer-logo.png' width="150" height="80"></img>
-      <div className="text-lg">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or </div>
-    </div>
-    <div className="flex flex-col gap-12" >
-      <div className="text-2xl font-semibold">ADDRESS</div>
-      <div className="text-lg">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or </div>
-    </div>
-    <div className="flex flex-col gap-12">
-      <div className="font-semibold text-2xl">NEWSLETTER</div>
-      <input className="text-xl rounded-full p-2" type={"email"} placeholder="Enter your email"></input>
-      <button className="w-fit pl-5 pr-5 pt-2 pb-2 bg-[#c9e5fb] rounded-full">SUBSCRIBE</button>
-    </div>
-    </div>
-    <div className="w-[60%] mr-auto ml-auto h-[2px] mt-9 bg-[#f9f9cf]"></div>
-    <div className="flex gap-4 w-fit ml-auto mr-auto mt-5">
-    <img src='/images/fb-icon.png'></img>
-    <img src='/images/instagram-icon.png'></img>
-    <img src='/images/twitter-icon.png'></img>
-    <img src='/images/linkedin-icon.png'></img>
-    
-    </div>
-  
-   </div>
+<div>
+<ContactComp></ContactComp>
+</div>
+
+<Footer></Footer>
     </div>
   );
 }
